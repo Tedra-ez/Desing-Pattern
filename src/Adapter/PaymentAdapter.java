@@ -9,7 +9,7 @@ public class PaymentAdapter implements PaymentProcessor {
 
     @Override
     public void process(double amount) {
-        int cents = (int) (amount * 100);
-        oldSystem.makePayment(cents);
+        int tiyn = (int) (amount * 100);
+        oldSystem.makePayment(tiyn);
     }
 }
