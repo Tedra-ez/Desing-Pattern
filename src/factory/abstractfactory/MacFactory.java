@@ -1,6 +1,7 @@
 package factory.abstractfactory;
 
 public class MacFactory implements GuiFactory {
+
     @Override
     public Button createButton() {
         return new MacButton();
