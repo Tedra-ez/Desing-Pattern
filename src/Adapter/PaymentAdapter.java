@@ -1,7 +1,7 @@
 package Adapter;
 
 public class PaymentAdapter implements PaymentProcessor {
-    private OldPaymentSystem oldSystem;
+    private final OldPaymentSystem oldSystem;
 
     public PaymentAdapter(OldPaymentSystem oldSystem) {
         this.oldSystem = oldSystem;
