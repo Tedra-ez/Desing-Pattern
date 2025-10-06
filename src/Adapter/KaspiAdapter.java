@@ -1,7 +1,7 @@
 package Adapter;
 
 public class KaspiAdapter implements Payment {
-    private KaspiPayment kaspiPayment;
+    private final KaspiPayment kaspiPayment;
 
     public KaspiAdapter(KaspiPayment kaspiPayment){
     this.kaspiPayment= kaspiPayment;
