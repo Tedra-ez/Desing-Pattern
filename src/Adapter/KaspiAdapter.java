@@ -1,9 +1,15 @@
 package Adapter;
 
-public class KaspiAdapter extends KaspiPayment implements Payment {
+public class KaspiAdapter implements Payment {
+    private KaspiPayment kaspiPayment;
+
+    public KaspiAdapter(KaspiPayment kaspiPayment){
+    this.kaspiPayment= kaspiPayment;
+
+    }
     @Override
     public void pay() {
-        super.sendKaspi();
-        System.out.println("Kaspi адаптирован ✓");
+        kaspiPayment.sendKaspi();
+        System.out.println("Kaspi адаптирован!");
     }
 }

@@ -1,9 +1,16 @@
 package Adapter;
 
-public class HalykAdapter extends HalykPayment implements Payment {
+public class HalykAdapter implements Payment {
+    private HalykPayment halyk;
+
+    public HalykAdapter(HalykPayment halyk) {
+        this.halyk = halyk;
+    }
+
     @Override
     public void pay() {
-        super.processHalyk();
-        System.out.println("Halyk адаптирован ✓");
+        halyk.processHalyk();
+        System.out.println("Halyk адаптирован!");
+
     }
 }
