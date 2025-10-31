@@ -1,14 +1,22 @@
-package Second_Half.Strategy.app;
+package SecondPart.Strategy.app;
 
-import Second_Half.Strategy.context.PaymentContext;
-import Second_Half.Strategy.strategy.*;
+import SecondPart.Strategy.Interface.IPaymentStrategy;
+import SecondPart.Strategy.context.PaymentContext;
+import SecondPart.Strategy.strategy.*;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         PaymentContext context = new PaymentContext();
+
+        Map<Integer, IPaymentStrategy> strategies = new HashMap<>();
+        strategies.put(1, new KaspiGoldPayment());
+        strategies.put(2, new KaspiQRPayment());
+        strategies.put(3, new KaspiRedPayment());
 
         System.out.println("=== Kaspi Payment System ===");
         System.out.println("Выберите способ оплаты:");
@@ -18,23 +26,8 @@ public class Main {
         System.out.print("Ваш выбор: ");
 
         int choice = scanner.nextInt();
-        IPaymentStrategy strategy;
-
-        IPaymentStrategy kaspiGold = new KaspiGoldPayment();
-        IPaymentStrategy kaspiRed = new KaspiRedPayment();
-        IPaymentStrategy kaspiQR = new KaspiQRPayment();
-
-        switch (choice) {
-            case 1 -> strategy = kaspiGold;
-            case 2 -> strategy = kaspiRed;
-            case 3 -> strategy = kaspiQR;
-            default -> {
-                System.out.println("Некорректный выбор! По умолчанию используется Kaspi Gold.");
-                strategy = kaspiGold;
-            }
-        }
-
-        context.setStrategy(strategy);
+        IPaymentStrategy selectedStrategy = strategies.getOrDefault(choice, new KaspiGoldPayment());
+        context.setStrategy(selectedStrategy);
 
         System.out.print("\nВведите сумму для оплаты: ");
         double amount = scanner.nextDouble();

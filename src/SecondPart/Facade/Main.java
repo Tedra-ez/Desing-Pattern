@@ -2,16 +2,6 @@ package SecondPart.Facade;
 
 public class Main {
     public static void main(String[] args) {
-<<<<<<< HEAD
-        Phone phone = new Phone();
-        KaspiApp kaspiApp = new KaspiApp();
-        KaspiNotification notification = new KaspiNotification();
-
-        KaspiFacade kaspi = new KaspiFacade(phone, kaspiApp, notification);
-
-        kaspi.startKaspi();
-        kaspi.stopKaspi();
-=======
         System.out.println("=== Kaspi Facade Example ===");
 
         KaspiFacade kaspi = new KaspiFacade();
@@ -23,6 +13,5 @@ public class Main {
 
         kaspi.searchUser("Aigerim");
         kaspi.searchUser("Zhanibek");
->>>>>>> 77d0458 (commit)
     }
 }

@@ -1,17 +1,25 @@
-package SecondPart.Strategy;
+package SecondPart.Strategy.context;
+
+import SecondPart.Strategy.Interface.IPaymentStrategy;
 
 public class PaymentContext {
-    private PaymentStrategy strategy;
+    private IPaymentStrategy strategy;
 
-    public void setStrategy(PaymentStrategy strategy) {
+    public void setStrategy(IPaymentStrategy strategy) {
         this.strategy = strategy;
     }
 
-    public void makePayment(double amount) {
+    public void executePayment(double amount) {
         if (strategy == null) {
-            System.out.println("Способ оплаты не выбран ❌");
+            System.out.println("Ошибка: способ оплаты не выбран!");
         } else {
             strategy.pay(amount);
         }
+    }
+
+    public String getStrategyDescription() {
+        return (strategy == null)
+                ? "Нет выбранной стратегии оплаты"
+                : strategy.getDescription();
     }
 }
